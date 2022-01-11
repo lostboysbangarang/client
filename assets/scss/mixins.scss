@@ -7,12 +7,21 @@
     }   
 }
 
-@keyframes slide-in {
+@keyframes slidein {
     0% {
-        transform: translateX(11.25%)
+        opacity: 1
     }
     100% {
-        transform: translateX(22.5%)
+        opacity: 0
 
+    }
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }

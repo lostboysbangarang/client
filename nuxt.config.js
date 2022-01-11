@@ -33,6 +33,7 @@ export default {
   },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src:"~/plugins/validate.js", ssr: false}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -50,14 +51,51 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     'vue-scrollto/nuxt',
+    ['nuxt-validate', {
+      lang: 'en',
+      nuxti18n: {
+        locale: {
+          'en-us': 'en_US'
+        }
+      }
+      // ...
+      // regular vee-validate options
+      // https://github.com/logaretm/vee-validate/blob/master/docs/configuration.md
+    }],
+    ['nuxt-mail', {
+      message: {
+        to: 'Hayden@LugoWebDevelopment.com',
+      },
+      smtp: {
+        host: 'smtp.mailtrap.io',
+        port: 2525,
+        auth: {
+          user: 'username',
+          pass: 'password'
+        },
+      },
+    }],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: '/',
+		credentials: true,
+  },
+  server: {
+		host: '0.0.0.0',
+    port: '6969'
+	},
+  serverMiddleware: {
+		'/api': '~/api/index.js',
+	},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     standalone: true,
+    transpile: [
+      '@nuxt.config.js'
+    ]
   },
   // Router Config???
   router: {

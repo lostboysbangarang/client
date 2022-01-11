@@ -1,7 +1,9 @@
 <template>
   <div class="container dark">
     <Nav />
-    <BodyIndex />
+    <div class="body">
+        <BodyIndex />
+    </div>
     <ContactModal />
     <div class="projects">
         <Projects />

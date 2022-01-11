@@ -13,22 +13,16 @@
             }
         },
         fetch() {},
-        computed: {
-        },
-        async beforeCreate() {
-            },
-        created() {
-            },
-        beforeMount() {
-        },
-        mounted() {
-        },
+        computed: {},
+        async beforeCreate() {},
+        created() {},
+        beforeMount() {},
+        mounted() {},
         beforeUpdate() {},
         updated() {},
         beforeDestroy() {},
         destroyed() {},
-        methods: {
-        },
+        methods: {},
     }
     
 </script>

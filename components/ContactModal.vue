@@ -1,6 +1,12 @@
 <template>
     <div class='container'>
-        <button @click="peekAboo = !peekAboo" class="mailBtn click">
+        <button @click="peekAboo = !peekAboo"
+                v-scroll-to="{
+                    el: '.body',
+                    offset: -80,
+                    container: 'body'
+                    }"
+                class="mailBtn click">
             <img :src="require(`~/assets/svg/mail.svg`)" alt="">
         </button>
         <transition name="LtoR" appear>
@@ -69,21 +75,65 @@
                     <h4 class="subtitle subContact">
                         I'm currently open to new opportunities.
                     </h4>
-                    <form onsubmit="contact(event)" class="contactForm">
-                        <div class="item">
-                            <label class="label">Name</label>
-                            <input type="text" class="input" name="user_name" required></input>
-                        </div>
-                        <div class="item">
-                            <label class="label">Email</label>
-                            <input type="email" class="input" name="user_email" required></input>
-                        </div>
-                        <div class="item">
-                            <label class="label">Message</label>
-                            <textarea type="text" class="input" name="message" required></textarea>
-                        </div>
-                        <button class="formSubmit button" id="contactSubmit">Send it my way</button>
-                    </form>
+                    <ValidationObserver     v-slot="{ invalid }"
+                                            class='Valli'>
+                        <form :disabled="loading" @submit.prevent="mailer" class="contactForm">
+                            <ValidationProvider         v-slot="{ errors }"
+                                                        name="form.givenName"
+                                                        rules="required|min:2|max:35|alphaNum">
+                                <div class="item">
+                                    <label class="label">Name</label>
+                                    <input  v-model="form.givenName"
+                                            
+                                            placeholder="Amala Dlamini"
+                                            type="text"
+                                            class="input"/>
+                                    <span   v-for="id in errors[0]"
+                                            :key="id"
+                                            class="input-invalid-message">{{id.txt}}</span>
+                                </div>
+                            </ValidationProvider>
+                            <ValidationProvider         v-slot="{ errors }"
+                                                        name="form.email"
+                                                        rules="required|max:69|email">
+                                <div class="item">
+                                    <label class="label">Email</label>
+                                    <input  v-model="form.email"
+                                            required
+                                            placeholder="AmalaDlamini@HotMail.com"
+                                            class="input"/>
+                                    <div v-if="errors">
+                                        <span   v-for="id in errors[0]"
+                                                :key="id"
+                                                class="input-invalid-message">{{id.txt}}<br></span>
+                                    </div>
+                                </div>
+                            </ValidationProvider>   
+                            <!-- <div class="item">
+                                <label class="label">Email</label>
+                                <input type="email" class="input" name="user_email" required/>
+                            </div> -->
+                            <ValidationProvider         v-slot="{errors}"
+                                                        name="message"
+                                                        rules="required|max:420|alphaNum">    
+                                <div class="item">
+                                    <label class="label">Message</label>
+                                    <textarea   required
+                                                v-model="form.message"
+                                                type="text"
+                                                class="input"></textarea>
+                                    <div v-if="errors">
+                                        <span   v-for="id in errors[0]"
+                                                :key="id"
+                                                class="input-invalid-message">{{id.txt}}</span>
+                                    </div>
+                                </div>
+                            </ValidationProvider>
+                            <button     :disabled="invalid || loading"
+                                        class="formSubmit button"
+                                        id="contactSubmit">Send it my way</button>
+                        </form>
+                    </ValidationObserver>
                     <div class="overlay loading">
                         <img :src="require(`~/assets/svg/spinner.svg`)" alt="">
                     </div>
@@ -101,27 +151,38 @@
 </template>
 
 <script>
+    import { ValidationObserver, ValidationProvider } from 'vee-validate';
+    import axios from 'axios'
+
+    // import '@/plugins/validate'
     export default {
         name: 'ContactModal',
+        components: {
+            ValidationObserver,
+            ValidationProvider,
+        },
         asyncData() {},
         data() {
             // var peekAboo = false;
             return {
                 peekAboo: null,
+                error_message: '',
+                form: {
+                    givenName: '',
+                    email: '',
+                    message: '',
+                },
+                loading: false,
+                success: null,
+                errored: null,
             }
         },
         fetch() {},
-        computed: {
-        },
-        async beforeCreate() {
-            },
-        created() {
-            },
-        beforeMount() {
-        },
+        computed: {},
+        async beforeCreate() {},
+        created() {},
+        beforeMount() {},
         mounted() {
-            // console.log(this.$el.children);
-            // this.peekAboo();
             this.curtains()
         },
         beforeUpdate() {},
@@ -132,17 +193,19 @@
             curtains() {
                 console.log(`\n\tCurtains\n\n`)
                 console.log(this.$el.children)
+            },
+            submitForm() {
+                console.log(`\n\tTest\n\n`);
+                document.querySelector('.overlay').style.display = `flex`;
+                document.querySelector('.loading').style.zindex = `1`;
+            },
+            mailer() {
+                console.log(`\n\tMailer\n\n`)
+                document.querySelector('.overlay').style.display = `flex`;
+                document.querySelector('.loading').style.zindex = `1`;
+                axios.post('api/mail', this.form)
             }
-            // peekAboo(open) {
-            //     console.log(this.$el.children[0])
-            //     if (!open) {
-            //         this.$el.children[0].style.class = "modal open"
-            //         this.open = !open;
-            //     } else {
-            //         this.$el.children[0].style.class = "modal"
-            //         this.open = !open;
-            //     }
-            // }
+            
         },
     }
 </script>
@@ -200,6 +263,7 @@
         height: 720px;
         // visibility: hidden;
         border-radius: 24px;
+        // border: 2px solid red;
         // overflow: hidden;
         display: flex;
         // z-index: -1;
@@ -215,6 +279,7 @@
             justify-content: center;
             align-items: center;
             position: relative;
+            border-radius: 24px 0 0 24px;
             // transition: all 300ms ease-in;
             // @media (max-width: 800px) {
             //     flex-direction: row;
@@ -292,9 +357,12 @@
             flex-direction: column;
             // justify-content: center;
             // transform: translateX(10vw);
+            border-radius: 0 24px 24px 0;
+            overflow: hidden;
             align-items: center;
             position: relative;
             transform: translate(100%, -100%);
+            width: 50%;
             & .title, .subtitle {
                 color: white;
             }
@@ -305,90 +373,102 @@
                 font-size: 16px;
                 margin: 16px 0 24px 0;
             }
-            & .contactForm {
-                width: 72%;
-                & input, textarea {
-                    width: 100%;
-                    background-color: $charcoal;
-                    color: white;
-                    outline: none;
-                    border: 1px solid whitesmoke;
-                    border-top: none;
-                    border-left: none;
-                    border-right: none;
-                    height: 40px;
-                    // transition: all 300ms ease;
-                }
-                & textarea {
-                    resize: vertical;
-                    height: 104px;
-                    margin-top: 16px;
-                }
-                & label {
-                    font-size: 14px;
-                    font-weight: bold;
-                    margin-bottom: 8px;
-                }
-                & .item {
-                    margin-bottom: 24px;
-                }
-                & input:hover, textarea:hover {
-                    border-color: $blue;
-                }
-                & input:focus, textarea:focus {
-                    border-color: $buttonII;
-                }
-                & button {
-                    font-size: 16px;
-                    font-weight: 600;
-                    position: relative;
-                    display: inline-block;
-                    cursor: pointer;
-                    outline: none;
-                    border: 0;
-                    background: $buttonI;
-                    color: whitesmoke;
-                    vertical-align: middle;
-                    text-decoration: none;
-                    border-radius: .75em;
-                    &.button {
-                        padding: 1.25em 2em;
-                        // @media (max-width: 800px) {
-                        //     padding: .25em 1em;
+            .Valli{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                & .contactForm {
+                    width: 72%;
+                    & input, textarea {
+                        width: 100%;
+                        background-color: $charcoal;
+                        color: white;
+                        outline: none;
+                        border: 1px solid whitesmoke;
+                        border-top: none;
+                        border-left: none;
+                        border-right: none;
+                        height: 40px;
+                        // transition: all 300ms ease;
+                    }
+                    & textarea {
+                        resize: vertical;
+                        height: 104px;
+                        margin-top: 16px;
+                    }
+                    & label {
+                        font-size: 14px;
+                        font-weight: bold;
+                        margin-bottom: 8px;
+                    }
+                    & .item {
+                        margin-bottom: 24px;
+                        width: 100%;
+                        // span {
+                        //     // width: inherit;
+                        //     // height: stretch;
                         // }
-                        line-height: 1.5;
-                        border: 2px solid $buttonIV;
-                        transform-style: preserve-3d;
-                        transition: transform 150ms cubic-bezier(0, 0, .58, 1), background 150ms cubic-bezier(0, 0, .58, 1);
-                        &::before {
-                            position: absolute;
-                            content: "";
-                            width: 100%;
-                            height: 100%;
-                            top: 0;
-                            left: 0;
-                            right: 0;
-                            bottom: 0;
-                            background: $buttonIV;
-                            border-radius: inherit;
-                            box-shadow: 0 0 0 2px $buttonIV, 0 .625em 0 0 $buttonI;
-                            transform: translate3d(0, .75em, -1em);
-                        }
-                        &:hover {
-                            background: $buttonII;
-                            transform: translate(0em, .25em);
+                    }
+                    & input:hover, textarea:hover {
+                        border-color: $blue;
+                    }
+                    & input:focus, textarea:focus {
+                        border-color: $buttonII;
+                    }
+                    & button {
+                        font-size: 16px;
+                        font-weight: 600;
+                        position: relative;
+                        display: inline-block;
+                        cursor: pointer;
+                        outline: none;
+                        border: 0;
+                        background: $buttonI;
+                        color: whitesmoke;
+                        vertical-align: middle;
+                        text-decoration: none;
+                        border-radius: .75em;
+                        &.button {
+                            padding: 1.25em 2em;
+                            // @media (max-width: 800px) {
+                            //     padding: .25em 1em;
+                            // }
+                            line-height: 1.5;
+                            border: 2px solid $buttonIV;
+                            transform-style: preserve-3d;
+                            transition: transform 150ms cubic-bezier(0, 0, .58, 1), background 150ms cubic-bezier(0, 0, .58, 1);
                             &::before {
-                                box-shadow: 0 0 0 2px $buttonIV, 0 .5em 0 0 $buttonI;
-                                transform: translate3d(0, 0.5em, -2em);
+                                position: absolute;
+                                content: "";
+                                width: 100%;
+                                height: 100%;
+                                top: 0;
+                                left: 0;
+                                right: 0;
+                                bottom: 0;
+                                background: $buttonIV;
+                                border-radius: inherit;
+                                box-shadow: 0 0 0 2px $buttonIV, 0 .625em 0 0 $buttonI;
+                                transform: translate3d(0, .75em, -1em);
                             }
-                        }
-                        &:active {
-                            background: $buttonII;
-                            transform: translate(0em, 0.75em);
-                            &::before {
-                            box-shadow: 0 0 0 2px $buttonIV, 0 .25em 0 0 $buttonI;
-                            transform: translate3d(0, 0.25em, -1em);
-                            
+                            &:hover {
+                                background: $buttonII;
+                                transform: translate(0em, .25em);
+                                &::before {
+                                    box-shadow: 0 0 0 2px $buttonIV, 0 .5em 0 0 $buttonI;
+                                    transform: translate3d(0, 0.5em, -2em);
+                                }
+                            }
+                            &:active {
+                                background: $buttonII;
+                                transform: translate(0em, 0.75em);
+                                &::before {
+                                box-shadow: 0 0 0 2px $buttonIV, 0 .25em 0 0 $buttonI;
+                                transform: translate3d(0, 0.25em, -1em);
+                                
+                                }
                             }
                         }
                     }
