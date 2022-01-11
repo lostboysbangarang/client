@@ -1,0 +1,18 @@
+@keyframes scroll {
+    0% {
+        transform: translateY(3px);
+    }
+    100% {
+        transform: translateY(-3px);
+    }   
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translateX(11.25%)
+    }
+    100% {
+        transform: translateX(22.5%)
+
+    }
+}

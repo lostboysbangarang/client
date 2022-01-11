@@ -24,6 +24,7 @@ export default {
   css: [
     '~assets/css/main.css',
     '~assets/scss/vars.scss',
+    '~assets/scss/mixins.scss',
   ],
   styleResources: {
     scss: [
@@ -48,6 +49,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    'vue-scrollto/nuxt',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

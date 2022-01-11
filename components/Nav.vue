@@ -66,13 +66,14 @@
         name: 'Nav',
         asyncData() {},
         data() {
-            var navHeight= null;
+            
             return {
                 mobile: null,
                 mobileNav: null,
                 windowWidth: null,
                 navHeight: null,
-                navHeight: null,
+                navH : { navHeight: null, },
+                
             }
         },
         fetch() {},
@@ -93,7 +94,7 @@
         mounted() {
             // console.log(`Test:\t`, this.$el.offsetHeight)
             this.navTall();
-            console.log(`navHeight:\t`, this.navHeight)
+            // console.log(`navHeight:\t`, this.navHeight)
         },
         beforeUpdate() {},
         updated() {},

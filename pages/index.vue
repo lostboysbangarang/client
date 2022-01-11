@@ -2,7 +2,17 @@
   <div class="container dark">
     <Nav />
     <BodyIndex />
-    <!-- <Projects /> -->
+    <ContactModal />
+    <div class="projects">
+        <Projects />
+    </div>
+    <a href="#" class="scroll" v-scroll-to="{
+        el: '.projects',
+        container: 'body',
+        offset: -80
+        }">
+        <div class="scrollIcon click"></div>
+    </a>
   </div>
 </template>
 
@@ -22,7 +32,7 @@ export default {
     created() {
         },
     beforeMount() {
-        console.log(this)
+        // console.log(this)
     },
     mounted() {
 
@@ -40,10 +50,36 @@ export default {
 </script>
 
 <style lang="scss">
-  .container {
-      background-color: whitesmoke;
-      &.dark {
-          background-color: $blue;
-      }
-  }
+    // @use('@/assets/scss/vars.scss')
+    .container {
+        background-color: whitesmoke;
+        &.dark {
+            background-color: $blue;
+        }
+        .scroll {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateY(-50%);
+            &Icon {
+                width: 20px;
+                height: 30px;
+                border: 2px solid whitesmoke;
+                border-radius: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &:after {
+                        content: "";
+                        width: 4px;
+                        height: 6px;
+                        background-color: whitesmoke;
+                        border-radius: 2px;
+                        animation: scroll 1000ms infinite alternate-reverse;
+
+                }
+            }
+        }
+    }
+    
 </style>

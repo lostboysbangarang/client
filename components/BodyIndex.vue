@@ -56,8 +56,8 @@
         beforeMount() {
         },
         mounted() {
-            console.log(`test:\t`, Nav)
-            console.log(Nav)
+            // console.log(`test:\t`, Nav)
+            // console.log(Nav)
             // this.navHeight = Nav.methods.navTall()
         },
         beforeUpdate() {},
