@@ -11,16 +11,16 @@
                 <div class="nav-links" v-show="!mobile">
                     <ul>
                         <li class="link">
-                            <nuxt-link to='/'>.About()</nuxt-link>
+                            <nuxt-link class="link__hover-effect--dark" to='/'>.About()</nuxt-link>
                         </li>
                         <li class="link">
-                            <nuxt-link to='/'>.Projects()</nuxt-link>
+                            <nuxt-link class="link__hover-effect--dark" to='/'>.Projects()</nuxt-link>
                         </li>
                         <li class="link">
-                            <nuxt-link to='/'>.Contact()</nuxt-link>
+                            <nuxt-link class="link__hover-effect--dark" to='/'>.Contact()</nuxt-link>
                         </li>
                         <li>
-                            <nuxt-link to='/'>.Login()/.Register()</nuxt-link>
+                            <nuxt-link class="link__hover-effect--dark" to='/'>.Login()/.Register()</nuxt-link>
                         </li>
                         <li class="adjust">
                             <img src="~assets/svg/adjust.svg" alt="">
@@ -40,16 +40,16 @@
                                 <img src="~assets/svg/adjust.svg" alt="">
                             </li>
                             <li class="link">
-                                <nuxt-link to='/'>.About()</nuxt-link>
+                                <nuxt-link class="link__hover-effect--dark" to='/'>.About()</nuxt-link>
                             </li>
                             <li class="link">
-                                <nuxt-link to='/'>.Projects()</nuxt-link>
+                                <nuxt-link class="link__hover-effect--dark" to='/'>.Projects()</nuxt-link>
                             </li>
                             <li class="link">
-                                <nuxt-link to='/'>.Contact()</nuxt-link>
+                                <nuxt-link class="link__hover-effect--dark" to='/'>.Contact()</nuxt-link>
                             </li>
                             <li class="link">
-                                <nuxt-link to='/'>.Login()/.Register()</nuxt-link>
+                                <nuxt-link class="link__hover-effect--dark" to='/'>.Login()/.Register()</nuxt-link>
                             </li>
                         </ul>
                         <!-- <div class="nav-links">
@@ -129,7 +129,40 @@
     // $buttonIII: #9A031E;
     // $buttonIV: #5F0F40;
     // $blue: #0F4C5C;
-
+    .link__hover-effect {
+        position: relative;
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            height: 3px;
+            width: 0;
+            right: 0;
+            background-color: $charcoal;
+            transition: all 300ms ease;
+        }
+        &:hover:after {
+            left: 0;
+            width: 100%;
+        }
+    }
+    .link__hover-effect--dark {
+        position: relative;
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            height: 3px;
+            width: 0;
+            right: 0;
+            background-color: whitesmoke;
+            transition: all 300ms ease;
+        }
+        &:hover:after {
+            left: 0;
+            width: 100%;
+        }
+    }
     header {
         opacity: 1;
         visibility: visible;

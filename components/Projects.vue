@@ -50,5 +50,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        position: relative;
+        z-index: 1;
     }
 </style>

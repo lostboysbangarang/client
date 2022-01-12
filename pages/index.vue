@@ -1,5 +1,5 @@
 <template>
-  <div class="container dark">
+  <div @mousemove="wheee" class="container dark">
     <Nav />
     <div class="body">
         <BodyIndex />
@@ -8,6 +8,7 @@
     <div class="projects">
         <Projects />
     </div>
+    <Shapes />
     <a href="#" class="scroll" v-scroll-to="{
         el: '.projects',
         container: 'body',
@@ -36,9 +37,7 @@ export default {
     beforeMount() {
         // console.log(this)
     },
-    mounted() {
-
-    },
+    mounted() {    },
     beforeUpdate() {},
     updated() {},
     beforeDestroy() {},
@@ -47,6 +46,25 @@ export default {
         // fixHeight = () => {
         //     let height = this.$children[0].clientHeight;
         // }
+        wheee(event) {
+            const scaleFact = 1 / 20;
+            const shapes = document.querySelectorAll(".shape");
+            const shapesII = document.querySelectorAll(".shape");
+            var xPos = event.clientX * scaleFact;
+            var yPos = event.clientY * scaleFact;
+            for (let i=0; i < shapes.length; i++) {
+                const isOdd = i % 2 !==0;
+                var oddInt;
+                if (isOdd) {
+                    oddInt = 1;
+                } else {
+                    oddInt = -1;
+                }
+                xPos = xPos * oddInt;
+                yPos = yPos * oddInt;
+                shapesII[i].style.transform = `translate(${xPos}px, ${yPos}px)`;
+            }
+        }
     },
 }
 </script>
