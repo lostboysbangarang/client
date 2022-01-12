@@ -83,6 +83,7 @@
         // padding: 48px 0px;
         margin-bottom: 48px;
         width: 100%;
+        height: 100%;
         max-width: 1200px;
         // background-color: red;
         position: relative;
@@ -104,6 +105,7 @@
             transition: all 450ms ease;
             @media (max-width: 800px) {
                 text-overflow: ellipsis;
+                top: 0%;
                 left: 8px;
                 margin-top: 4px;
             }
@@ -123,14 +125,22 @@
                     margin: 0;
                 }
             }
-            & .para {
-                margin: 16px 0;
-                color: whitesmoke;
-                z-index: 15;
+            p {
+                &.para {
+                    margin: 16px 0;
+                    color: whitesmoke;
+                    z-index: 15;
+                }
                 @media (max-width: 800px) {
                     margin: 0;
-                    text-overflow: ellipsis;
+                    height: 80px;
+                    
+                    
                 }
+                height: 160px;
+                overflow-y: auto;
+                // white-space: nowrap;
+                text-overflow: ellipsis;
             }
         }
         .background {

@@ -83,13 +83,13 @@
                             <ValidationProvider         v-slot="{ errors }"
                                                         name="form.givenName"
                                                         rules="required|min:2|max:35">
-                                <div class="item">
+                                <div class="item name">
                                     <label class="label">Name</label>
                                     <input  v-model="form.givenName"
                                             
                                             placeholder="Amala Dlamini"
                                             type="text"
-                                            class="input"/>
+                                            class="input name"/>
                                     <span   v-for="id in errors[0]"
                                             :key="id"
                                             class="input-invalid-message">{{id.txt}}</span>
@@ -98,12 +98,12 @@
                             <ValidationProvider         v-slot="{ errors }"
                                                         name="form.email"
                                                         rules="max:69|email:required">
-                                <div class="item">
+                                <div class="item email">
                                     <label class="label">Email</label>
                                     <input  v-model="form.email"
                                             required
                                             placeholder="AmalaDlamini@HotMail.com"
-                                            class="input"/>
+                                            class="input email"/>
                                     <div v-if="errors">
                                         <span   v-for="id in errors[0]"
                                                 :key="id"
@@ -111,19 +111,19 @@
                                     </div>
                                 </div>
                             </ValidationProvider>   
-                            <!-- <div class="item">
+                            <!-- <div class="item name">
                                 <label class="label">Email</label>
                                 <input type="email" class="input" name="user_email" required/>
                             </div> -->
                             <ValidationProvider         v-slot="{errors}"
                                                         name="message"
                                                         rules="max:420">    
-                                <div class="item">
+                                <div class="item msg">
                                     <label class="label">Message</label>
                                     <textarea   
                                                 v-model="form.message"
                                                 type="text"
-                                                class="input"></textarea>
+                                                class="input msg"></textarea>
                                     <div v-if="errors">
                                         <span   v-for="id in errors[0]"
                                                 :key="id"
@@ -242,6 +242,115 @@
 
     .container {
         height: 0px;
+        // width: 100vw;
+        @media (max-width: 800px) {
+            .modal {
+                height: 90vh;
+                transform: translate(5%, -100%);
+                &Half {
+                    width: 100%;
+                    height: 50%;
+                    border-radius: none;
+                    justify-content: flex-start;
+                    // * {
+                        //     display: none;
+                    //     margin: 0;
+                    //     padding: 0;
+                    //     border-radius: none;
+                    // }
+
+                }
+                .about {
+                    border-radius: 24px 24px 0px 0px;
+                    height: 55%;
+                    h3 {
+                        line-height: .05;
+                        font-size: 20px;
+                    }
+                    h4 {
+                        margin: 0px;
+                    }
+                    .para {
+                        font-size: 12px;
+                        margin-top: 4%;
+                        br {
+                            margin: 8px 0px;
+                        }
+                    }
+                    .languages {
+                        margin-top: -10%;
+                        // width: 70%;
+                        figure {
+                            flex-direction: none;
+                            justify-content: none;
+                            // flex: 0 0 3.125%;
+                            height: 24px;
+                            // flex-basis: 1.5625%;
+                            img {
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+                .contact {
+                    width: 100%;
+                    height: 45%;
+                    transform: translate(0%, -100%);
+                    border-radius: 0px 0px 24px 24px;
+                    z-index: 20;
+                    .butts {
+                        // position: relative;
+                        top: 80%;
+                        right: 4%;
+                        z-index: 20;
+                        // height: 100% !important;
+                        // background-color: white;
+                    }
+                    .title {
+                        font-size: 24px;
+                        margin: 8px 0px;
+                    }
+                    .subtitle {
+                        font-size: 12px;
+                        margin: 0px 0px 8px 0px;
+                    }
+                    .Valli {
+                        justify-content: flex-start;
+                        .contactForm {
+                            margin-left: 4px;
+                            width: 100%;
+                            .item {
+                                &.name, &.email {
+                                    display: flex;
+                                    flex-direction: column;
+                                }
+                                .input {
+                                    &.name, &.email{ 
+                                        width: 40%;
+                                    }
+                                }
+                                &.msg {
+                                    position: relative;
+                                    width: 50%;
+                                    transform: translate(95%, -113%)
+                                }
+                            }
+                            button {
+                                position: relative;
+                                transform: translate(0%, -270%);
+                                .button {
+                                }
+                            }
+                        }
+                    }
+                    .overlay {
+                        &.success {
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+        }
     }
     .LtoR-enter-active, .LtoR-leave-active {
         transition: all 1500ms;
@@ -395,7 +504,7 @@
             transform: translate(100%, -100%);
             width: 50%;
             & .title, .subtitle {
-                color: white;
+                color: whitesmoke;
             }
             & .title {
                 font-size: 32px;

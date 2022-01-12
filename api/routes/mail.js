@@ -22,7 +22,7 @@ router.post('/mail', (req, res) => {
     const options = {
         from: 'AmalaDlamini1@hotmail.com',
         // to: 'Hayden@LugoWebDevelopment.com',
-        to: 'AmalaDlamini1@hotmail.com',
+        to: 'Hayden@LugoWebDevelopment.com',
         subject: `Portfolio Interest from:\t\t&emsp;${req.body.givenName}`,
         text: `${req.body.message}\n\n          ${req.body.email}`
     }
