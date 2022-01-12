@@ -82,8 +82,8 @@ export default {
 		credentials: true,
   },
   server: {
-		host: '0.0.0.0',
-    port: '6969'
+		host: '0.0.0.0'
+    // port: '6969'
 	},
   serverMiddleware: {
 		'/api': '~/api/index.js',
