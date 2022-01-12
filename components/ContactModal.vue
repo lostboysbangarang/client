@@ -68,7 +68,9 @@
         <transition name="RtoL">
             <div v-if="peekAboo" class='modal'>
                 <div class="modalHalf contact">
-                    <img class="exit click" onclick="toggleModal()" title="Exit Portal" :src="require(`~/assets/svg/exit.svg`)" alt="">
+                    <button class="butts" @click.prevent="peekAboo = !peekAboo">
+                        <img class="exit click" title="Exit Portal" :src="require(`~/assets/svg/exit.svg`)" alt="">
+                    </button>
                     <h3 class="title titleContact">
                         Let's have a chat!
                     </h3>
@@ -80,7 +82,7 @@
                         <form :disabled="loading" @submit.prevent="mailer" class="contactForm">
                             <ValidationProvider         v-slot="{ errors }"
                                                         name="form.givenName"
-                                                        rules="required|min:2|max:35|alphaNum">
+                                                        rules="required|min:2|max:35">
                                 <div class="item">
                                     <label class="label">Name</label>
                                     <input  v-model="form.givenName"
@@ -95,7 +97,7 @@
                             </ValidationProvider>
                             <ValidationProvider         v-slot="{ errors }"
                                                         name="form.email"
-                                                        rules="required|max:69|email">
+                                                        rules="max:69|email:required">
                                 <div class="item">
                                     <label class="label">Email</label>
                                     <input  v-model="form.email"
@@ -115,10 +117,10 @@
                             </div> -->
                             <ValidationProvider         v-slot="{errors}"
                                                         name="message"
-                                                        rules="required|max:420|alphaNum">    
+                                                        rules="max:420">    
                                 <div class="item">
                                     <label class="label">Message</label>
-                                    <textarea   required
+                                    <textarea   
                                                 v-model="form.message"
                                                 type="text"
                                                 class="input"></textarea>
@@ -140,7 +142,7 @@
                     <div class="overlay success">
                         Thanks for the message!
                         <br>    <br>
-                        It will be sent to my email via jQuery magic.
+                        It will be sent to my email via node and Nuxt.js magic.
                         <br>    <br>
                         I look forward to speaking with you soon!
                     </div>
@@ -161,7 +163,10 @@
             ValidationObserver,
             ValidationProvider,
         },
-        asyncData() {},
+        // async asyncData({$axios}) {
+        //     const mailPush = await $axios.$post('/api/mail')
+        //     return(mailPush);
+        // },
         data() {
             // var peekAboo = false;
             return {
@@ -199,11 +204,34 @@
                 document.querySelector('.overlay').style.display = `flex`;
                 document.querySelector('.loading').style.zindex = `1`;
             },
-            mailer() {
-                console.log(`\n\tMailer\n\n`)
+            async mailer() {
+                // console.log(`\n\tMailer\n\n`)
                 document.querySelector('.overlay').style.display = `flex`;
-                document.querySelector('.loading').style.zindex = `1`;
-                axios.post('api/mail', this.form)
+                // document.querySelector('.overlay').style.backgroundColor = `$charcoalTrain`;
+                // document.querySelector('.overlay').style.zIndex = `10`;
+                document.querySelector('.loading').style.zIndex = `10`;
+                document.querySelector('.loading').style.position = `absolute`;
+                // document.querySelector('.item').style.zIndex = `1`;
+                
+                const  push = async() => {
+                    console.log(`\n\tTrying push\n`);
+                    try { 
+                        const push = await this.$axios.post('/mail', this.form).then(() => {
+                            console.log(`\n\t\tThen step in process\n`)
+                            document.querySelector('.success').style.zIndex = `15`
+                            document.querySelector('.success').style.display = `flex`
+                            document.querySelector('.loading').style.display = `none`
+                            document.querySelector('.Valli').style.display = `none`
+                            document.querySelector('.titleContact').style.display = `none`
+                            document.querySelector('.subContact').style.display = `none`
+                            document.querySelector('.overlay').style.backgroundColor = `none`
+                        })
+                        this.push = push
+                    } catch (err) {
+
+                    }
+                }
+                push()
             }
             
         },
@@ -234,7 +262,8 @@
         height: 72px;
         border-radius: 50%;
         border: none;
-        background-color: whitesmoke;
+        // background-color: whitesmoke;
+        // background-color: transparentize($color: #000000, $amount: 0);
         cursor: pointer;
         // position: sticky;
         & img {
@@ -258,6 +287,7 @@
         left:   0%;
         z-index: 25;
         transform: translate(11.25%, -135%);
+        
         width: 90%;
         max-width: 1200px;
         height: 720px;
@@ -280,6 +310,7 @@
             align-items: center;
             position: relative;
             border-radius: 24px 0 0 24px;
+            box-shadow: 0 20px 80px 0 rgba(0,0,0,0.45);
             // transition: all 300ms ease-in;
             // @media (max-width: 800px) {
             //     flex-direction: row;
@@ -418,19 +449,19 @@
                         border-color: $buttonII;
                     }
                     & button {
-                        font-size: 16px;
-                        font-weight: 600;
-                        position: relative;
-                        display: inline-block;
-                        cursor: pointer;
-                        outline: none;
-                        border: 0;
-                        background: $buttonI;
-                        color: whitesmoke;
-                        vertical-align: middle;
-                        text-decoration: none;
-                        border-radius: .75em;
                         &.button {
+                            font-size: 16px;
+                            font-weight: 600;
+                            position: relative;
+                            display: inline-block;
+                            cursor: pointer;
+                            outline: none;
+                            border: 0;
+                            background: $buttonI;
+                            color: whitesmoke;
+                            vertical-align: middle;
+                            text-decoration: none;
+                            border-radius: .75em;
                             padding: 1.25em 2em;
                             // @media (max-width: 800px) {
                             //     padding: .25em 1em;
@@ -475,7 +506,7 @@
                 }
             }
             & .overlay {
-                position: absolute;
+                position: relative;
                 top: 0;
                 left: 0;
                 width: 100%;
@@ -483,8 +514,9 @@
                 display: none;
                 justify-content: center;
                 align-items: center;
+                background-color: $charcoalTrain;
                 &.loading {
-                    background-color: #202020;
+                    // background-color: #202020;
                     z-index: -1;
                     & img {
                         height: 104px;
@@ -502,14 +534,21 @@
                     z-index: -1;
                 }
             }
-            & .exit {
+            .butts {
                 position: absolute;
                 top: 30px;
                 right: 40px;
-                filter: invert(50%) sepia(84%) saturate(3067%) hue-rotate(355deg) brightness(93%) contrast(92%);
                 height: 40px;
-                width: auto;
-                z-index: 100;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                // clickable: true;
+                .exit {
+                    filter: invert(50%) sepia(84%) saturate(3067%) hue-rotate(355deg) brightness(93%) contrast(92%);
+                    height: 100%;
+                    width: auto;
+                    z-index: 100;
+                }
             }
         }
         
