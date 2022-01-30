@@ -7,7 +7,7 @@
                     container: 'body'
                     }"
                 class="mailBtn click">
-            <img class="svg" :src="require(`~/assets/svg/mail.svg`)" alt="">
+            <img class="svgII" :src="require(`~/assets/svg/mail.svg`)" alt="">
         </button>
         <transition name="LtoR" appear>
             <div v-if="peekAboo" class="modal">
@@ -371,8 +371,8 @@
         height: 72px;
         border-radius: 50%;
         border: none;
-        background-color: var(--blue);
-        // background-color: whitesmoke;
+        background-color: var(--color-mailBtn);
+        // background-color: #fafafa;
         // background-color: transparentize($color: #000000, $amount: 0);
         cursor: pointer;
         // position: sticky;
@@ -380,7 +380,7 @@
             width: 48px;
             height: auto;
             // filter: invert(100%) sepia(98%) saturate(18%) hue-rotate(24deg) brightness(105%) contrast(100%);
-            filter: var(--filter-secondary);
+            filter: var(--filter-mail);
         }
         position: fixed;
         bottom: 32px;
@@ -396,7 +396,7 @@
         top:    0%;
         left:   0%;
         z-index: 25;
-        transform: translate(11.25%, -135%);
+        transform: translateY(-86vh) translateX(22vw);
         
         width: 90%;
         max-width: 1200px;
@@ -428,6 +428,7 @@
         }
         & .about {
             background-color: rgb(245, 245, 245);
+            color: var(--charcoal);
             display: flex;
             flex-direction: column;
             // transform: translateX(-150%);
@@ -505,7 +506,7 @@
             transform: translate(100%, -100%);
             width: 50%;
             & .title, .subtitle {
-                color: whitesmoke;
+                color: #fafafa;
             }
             & .title {
                 font-size: 32px;
@@ -527,7 +528,7 @@
                         background-color: $charcoal;
                         color: white;
                         outline: none;
-                        border: 1px solid whitesmoke;
+                        border: 1px solid #fafafa;
                         border-top: none;
                         border-left: none;
                         border-right: none;
@@ -568,7 +569,7 @@
                             outline: none;
                             border: 0;
                             background: $buttonI;
-                            color: whitesmoke;
+                            color: #fafafa;
                             vertical-align: middle;
                             text-decoration: none;
                             border-radius: .75em;

@@ -22,6 +22,7 @@
     "nuxt-mail": "^3.0.17",
     "nuxt-validate": "^1.0.1",
     "sequelize": "^6.13.0",
+    "vue-pdf": "^4.3.0",
     "vue-scrollto": "^2.20.0"
   },
   "devDependencies": {

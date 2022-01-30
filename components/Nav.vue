@@ -23,12 +23,16 @@
                             <nuxt-link class="link__hover-effect" to='/'>.Login()/.Register()</nuxt-link>
                         </li>
                         <li class="adjust">
-                            <img class='svg' src="~assets/svg/adjust.svg" alt="" @click="colorSwitch()">
+                            <img class='svg' src="~assets/svg/adjust.svg" alt="" @click="colorSwitch(this)">
                         </li>
                     </ul>
                 </div>
-                <img @click="toggleMobileNav" v-if="mobile && !mobileNav" class='svg icon' src="~assets/svg/blinds-raised.svg" alt="">
-                <img @click="toggleMobileNav" v-else class='svg icon' src="~assets/svg/blinds.svg" alt="">
+                <div v-if="mobile" @click="toggleMobileNav">
+                    <img v-if="mobile && !mobileNav" class='svg icon' :src="require('assets/svg/blinds-raised.svg')" alt="">
+                    <img v-else class='svg icon' :src="require('assets/svg/blinds.svg')" alt="">
+                </div>
+                <!-- <div @click="toggleMobileNav" v-else>
+                </div> -->
                 <!-- <div class="menu">
                     <div class="icon">
                     </div>
@@ -118,7 +122,23 @@
                 this.navHeight = this.$el.offsetHeight
             },
             colorSwitch() {
-                // console.log(this.colorMode.value);
+                let cooler = this.$el.parentElement.parentElement.className;
+                // console.log(cooler)
+                let elly= this.$el.parentElement.parentElement;
+                switch(cooler) {
+                    case 'dark-mode':
+                        // console.log(elly.classList)
+                        elly.classList.toggle('dark-mode');
+                        // console.log(elly.classList)
+                        elly.classList.toggle('light-mode');
+                        // console.log(elly.classList)
+                    break;
+                    case 'light-mode':
+                        elly.classList.toggle('light-mode');
+                        elly.classList.toggle('dark-mode');
+                    break;
+                    
+                }
             }
         },
     }
@@ -142,7 +162,7 @@
             height: 3px;
             width: 0;
             right: 0;
-            background-color: $charcoal;
+            background-color: var(--color-links);
             transition: all 300ms ease;
         }
         &:hover:after {
@@ -159,7 +179,7 @@
             height: 3px;
             width: 0;
             right: 0;
-            background-color: whitesmoke;
+            background-color: #fafafa;
             transition: all 300ms ease;
         }
         &:hover:after {
@@ -264,7 +284,7 @@
                     }
                 }
                 // .menu {
-                //     // background-color: whitesmoke;
+                //     // background-color: #fafafa;
                 //     margin-left: 12px;
                 //     position: fixed;
                 //     top: 0;

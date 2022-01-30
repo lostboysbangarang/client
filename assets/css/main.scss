@@ -36,12 +36,13 @@ h1, h2, h3, h4, h5, h6, span {
     --color: #303030;
     --color-primary: #5F0F40;
     --color-secondary: var(--purp);
-    --bg: whitesmoke;
+    --bg: #fafafa;
     --bg-secondary: #fff;
     --border-color: #ddd;
 
     --filter-secondary: invert(78%) sepia(44%) saturate(5544%) hue-rotate(342deg) brightness(99%) contrast(99%);
     --filter: invert(11%) sepia(37%) saturate(4200%) hue-rotate(300deg) brightness(103%) contrast(101%);
+    
     --filter-primary: invert(40%) sepia(79%) saturate(1012%) hue-rotate(353deg) brightness(96%) contrast(93%);
 
     --purp: #5F0F40;
@@ -52,11 +53,70 @@ h1, h2, h3, h4, h5, h6, span {
     --buttonIII: #9A031E;
     --buttonIV: #5F0F40;
     --blue: #0F4C5C;
+    body {
+        /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+          Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+        background-color: var(--bg);
+        color: var(--color);
+        transition: background-color 0.3s;
+        * {
+            a {
+                color: var(--color-primary);
+                text-decoration: none;
+            }
+            img.svg {
+                filter: var(--filter-primary);
+            }
+        }
+    }
+}
+.light-mode {
+    --color: #303030;
+    --color-primary: #5F0F40;
+    --color-mouse: var(--buttonI);
+    --color-secondary: var(--buttonI);
+    --color-mailBtn: var(--charcoalTrain);
+    --color-links: var(--buttonI);
+    --bg: #fafafa;
+    --bg-secondary: #fff;
+    --border-color: #ddd;
+
+    --filter-secondary: invert(78%) sepia(44%) saturate(5544%) hue-rotate(342deg) brightness(99%) contrast(99%);
+    --filter-primary: invert(11%) sepia(37%) saturate(4200%) hue-rotate(300deg) brightness(103%) contrast(101%);
+    --filter: invert(40%) sepia(79%) saturate(1012%) hue-rotate(353deg) brightness(96%) contrast(93%);
+    --filter-mail: invert(86%) sepia(56%) saturate(2%) hue-rotate(260deg) brightness(109%) contrast(96%);
+
+    --purp: #5F0F40;
+    --charcoal: #303030;
+    --charcoalTrain: rgba(48, 48, 48, .65);
+    --buttonI: #FB8B24;
+    --buttonII: #E36414;
+    --buttonIII: #9A031E;
+    --buttonIV: #5F0F40;
+    --blue: #0F4C5C;
+    body {
+        /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+          Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+        background-color: var(--bg);
+        color: var(--color);
+        transition: background-color 0.3s;
+        * {
+            a {
+                color: var(--color-primary);
+                text-decoration: none;
+            }
+            img.svg {
+                filter: var(--filter-primary);
+            }
+        }
+    }
 }
 .dark-mode {
-    --color: whitesmoke;
+    --color: #fafafa;
     --color-primary: var(--buttonII);
     --color-secondary: #fdf9f3;
+    --color-links: var(--buttonIII);
+    --color-mouse: #fafafa;
     --bg: var(--blue);
     --bg-secondary: #071521;
     --border-color: #0d2538;
@@ -68,20 +128,12 @@ h1, h2, h3, h4, h5, h6, span {
     --buttonIII: #9A031E;
     --buttonIV: #5F0F40;
     --blue: #0F4C5C;
-
+    --color-mailBtn: var(--buttonI);
     --filter: invert(78%) sepia(44%) saturate(5544%) hue-rotate(342deg) brightness(99%) contrast(99%);
+    --filter-mail: invert(21%) sepia(91%) saturate(410%) hue-rotate(145deg) brightness(96%) contrast(95%);
     --filter-primary: invert(40%) sepia(79%) saturate(1012%) hue-rotate(353deg) brightness(96%) contrast(93%);
     --filter-secondary: invert(11%) sepia(37%) saturate(4200%) hue-rotate(300deg) brightness(103%) contrast(101%);
-}
-.sepia-mode {
-    --color: #433422;
-    --color-secondary: #504231;
-    --bg: #f1e7d0;
-    --bg-secondary: #eae0c9;
-    --border-color: #ded0bf;
-}
-
-body {
+    body {
     /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
     background-color: var(--bg);
@@ -97,6 +149,16 @@ body {
         }
     }
 }
+}
+.sepia-mode {
+    --color: #433422;
+    --color-secondary: #504231;
+    --bg: #f1e7d0;
+    --bg-secondary: #eae0c9;
+    --border-color: #ded0bf;
+}
+
+
 // a {
 //     color: var(--color-primary);
 //     text-decoration: none;

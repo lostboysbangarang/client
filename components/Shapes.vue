@@ -1,14 +1,14 @@
 <template>
     <div>
         <img class="svg shape shape0" src="~assets/svg/semi circle.svg" alt="">
-        <img src="~assets/svg/circle.svg" alt="" class="svg shape shape1">
-        <img src="~assets/svg/squiggly.svg" alt="" class="svg shape shape2">
-        <img src="~assets/svg/circle.svg" alt="" class="svg shape shape3">
-        <img src="~assets/svg/triangle.svg" alt="" class="svg shape shape4">
-        <img src="~assets/svg/circle.svg" alt="" class="svg shape shape5">
-        <img src="~assets/svg/squiggly.svg" alt="" class="svg shape shape6">
-        <img src="~assets/svg/circle.svg" alt="" class="svg shape shape7">
-        <img src="~assets/svg/semi circle.svg" alt="" class="svg shape shape8">
+        <img src="~assets/svg/circle.svg" alt="" class="shape shape1">
+        <img src="~assets/svg/squiggly.svg" alt="" class="shape shape2">
+        <img src="~assets/svg/circle.svg" alt="" class="shape shape3">
+        <img src="~assets/svg/triangle.svg" alt="" class="shape shape4">
+        <img src="~assets/svg/circle.svg" alt="" class="shape shape5">
+        <img src="~assets/svg/squiggly.svg" alt="" class="shape shape6">
+        <img src="~assets/svg/circle.svg" alt="" class="shape shape7">
+        <img src="~assets/svg/semi circle.svg" alt="" class="shape shape8">
     </div>
 </template>
 
@@ -30,6 +30,7 @@
     .shape0 {
         top: 15vh;
         left: 5vw;
+        // filter: var(--filter);
     }
     .shape1 {
         top: 15vh;

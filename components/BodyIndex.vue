@@ -9,8 +9,8 @@
                     I'm Hayden
                 </h1>
                 <p class="headerP">
-                    I'm a <b class="purp">Full-Stack Web Dev</b> with a strong passion for learning new languages and techniques. <br>
-                    Here's a bit more <b onclick="toggleModal()" class="purp click">about me</b>.
+                    I'm a <span class="purp">Full-Stack Web Dev</span> with a strong passion for learning new languages and techniques. <br>
+                    Here's a bit more <span onclick="toggleModal()" class="purp click">about me</span>.
                 </p>
                 <div class="socials">
                     <a href="" target="_blank" class="links click">
@@ -22,7 +22,7 @@
                     <a href="" target="_blank" class="links click">
                         <img class="click svg" src="~assets/svg/file-pdf.svg" alt="">
                     </a>
-                    <a href="" target="_blank" class="links click">
+                    <a href="https://discord.gg/wwuJybnQUF" target="_blank" class="links click">
                         <img class="click svg" src="~assets/svg/discord.svg" alt="">
                     </a>
                 </div>
@@ -115,8 +115,9 @@
                     font-size: 16px;
                     margin-left: 16px
                 }
-                b {
+                span {
                     color: var(--color-primary);
+                    font-weight: bold;
                 }
             }
             .socials {
@@ -138,13 +139,13 @@
         //     // background-color: inherit;
         //     .header {
         //         .title {
-        //             color: whitesmoke;
+        //             color: #fafafa;
         //         }
         //         .titleSecondary {
         //             color: $buttonII;
         //         }
         //         .headerP {
-        //             color: whitesmoke;
+        //             color: #fafafa;
         //             b {
         //                 color: $buttonII;
         //             }

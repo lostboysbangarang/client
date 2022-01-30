@@ -5,7 +5,9 @@
             <div class="body">
                 <BodyIndex />
             </div>
-            <ContactModal />
+            <div class='CM'>
+                <ContactModal />
+            </div>
             <div class="projects">
                 <Projects />
             </div>
@@ -75,10 +77,21 @@ export default {
 <style lang="scss">
     // @use('@/assets/scss/vars.scss')
     .container {
-        // background-color: whitesmoke;
+        // background-color: #fafafa;
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        // justify-content: center;
         &.dark {
             background-color: $blue;
         }
+        // .CM {
+        //     display: flex;
+        //     width: fit-content;
+        //     height: fit-content;
+        //     background-color: red;
+
+        // }
         .scroll {
             position: fixed;
             bottom: 20px;
@@ -87,7 +100,7 @@ export default {
             &Icon {
                 width: 20px;
                 height: 30px;
-                border: 2px solid var(--color-primary);
+                border: 2px solid var(--color-mouse);
                 border-radius: 24px;
                 display: flex;
                 align-items: center;
@@ -96,7 +109,7 @@ export default {
                         content: "";
                         width: 4px;
                         height: 6px;
-                        background-color: var(--color-primary);
+                        background-color: var(--color-mouse);
                         border-radius: 2px;
                         animation: scroll 1000ms infinite alternate-reverse;
 

@@ -35,9 +35,10 @@
         created() {
             },
         beforeMount() {
-            this.$el.children[1].addEventListener(`mouseenter`, this.hoverMe)
-        },
+            },
         mounted() {
+            // console.log(this.$el)
+            this.$el.children[1].addEventListener(`mouseenter`, this.hoverMe)
             // console.log(`Project:\t`, this.hover)
             // console.log(`\nFinder:\n`, this.$el.children)
             // console.log(this.hoverMe())
@@ -110,7 +111,7 @@
                 margin-top: 4px;
             }
             & .title, .subtitle, .para {
-                color: whitesmoke;
+                color: var(--charcoal);
                 text-align: start;
             }
             & .title {
@@ -128,7 +129,7 @@
             p {
                 &.para {
                     margin: 16px 0;
-                    color: whitesmoke;
+                    color: var(--charcoal);
                     z-index: 15;
                 }
                 @media (max-width: 800px) {
