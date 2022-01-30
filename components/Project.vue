@@ -1,7 +1,7 @@
 <template>
     <section>
         <div @mouseover="backgroundUp()" @mouseleave="backgroundDown()" class="background"></div>
-        <img  :src="require(`~/assets/svg/${projectsSection.image}`)" alt="" />
+        <img :src="require(`~/assets/svg/${projectsSection.image}`)" alt="" />
         <div @mouseover="backgroundUp()" @mouseleave="backgroundDown()"  class="container">
             <h3 class="title">{{ projectsSection.title }}</h3>
             <h4 class="subtitle">
@@ -149,7 +149,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: $charcoal;
+            // background-color: $charcoal;
+            // filter: none;
             z-index: 10;
             opacity: 0;
             transition: opacity 300ms, transform 450ms ease;

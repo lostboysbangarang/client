@@ -1,22 +1,24 @@
 <template>
-  <div @mousemove="wheee" class="container dark">
-    <Nav />
-    <div class="body">
-        <BodyIndex />
-    </div>
-    <ContactModal />
-    <div class="projects">
-        <Projects />
-    </div>
-    <Shapes />
-    <a href="#" class="scroll" v-scroll-to="{
-        el: '.projects',
-        container: 'body',
-        offset: -80
-        }">
-        <div class="scrollIcon click"></div>
-    </a>
-  </div>
+    <body class="dark-mode">
+        <div @mousemove="wheee" class="container">
+            <Nav />
+            <div class="body">
+                <BodyIndex />
+            </div>
+            <ContactModal />
+            <div class="projects">
+                <Projects />
+            </div>
+            <Shapes />
+            <a href="#" class="scroll" v-scroll-to="{
+                el: '.projects',
+                container: 'body',
+                offset: -80
+                }">
+                <div class="scrollIcon click"></div>
+            </a>
+        </div>        
+    </body>
 </template>
 
 <script>
@@ -25,6 +27,7 @@ export default {
     asyncData() {},
     data() {
         return {
+            colors: ['system', 'light', 'dark']
         }
     },
     fetch() {},
@@ -72,7 +75,7 @@ export default {
 <style lang="scss">
     // @use('@/assets/scss/vars.scss')
     .container {
-        background-color: whitesmoke;
+        // background-color: whitesmoke;
         &.dark {
             background-color: $blue;
         }
@@ -84,7 +87,7 @@ export default {
             &Icon {
                 width: 20px;
                 height: 30px;
-                border: 2px solid whitesmoke;
+                border: 2px solid var(--color-primary);
                 border-radius: 24px;
                 display: flex;
                 align-items: center;
@@ -93,7 +96,7 @@ export default {
                         content: "";
                         width: 4px;
                         height: 6px;
-                        background-color: whitesmoke;
+                        background-color: var(--color-primary);
                         border-radius: 2px;
                         animation: scroll 1000ms infinite alternate-reverse;
 

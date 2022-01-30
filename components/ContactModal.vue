@@ -7,7 +7,7 @@
                     container: 'body'
                     }"
                 class="mailBtn click">
-            <img :src="require(`~/assets/svg/mail.svg`)" alt="">
+            <img class="svg" :src="require(`~/assets/svg/mail.svg`)" alt="">
         </button>
         <transition name="LtoR" appear>
             <div v-if="peekAboo" class="modal">
@@ -32,31 +32,31 @@
                     </p>
                     <div class="languages">
                         <figure>
-                            <img class="HTML" :src="require(`~/assets/svg/html5.svg`)" alt="">
+                            <img class="svg HTML" :src="require(`~/assets/svg/html5.svg`)" alt="">
                             <span class="name">
                                 HTML
                             </span>
                         </figure>
                         <figure>
-                            <img class="CSS" :src="require(`~/assets/svg/css.svg`)" alt="">
+                            <img class="svg CSS" :src="require(`~/assets/svg/css.svg`)" alt="">
                             <span class="name">
                                 SCSS/SASS
                             </span>
                         </figure>
                         <figure>
-                            <img class="js" :src="require(`~/assets/svg/js.svg`)" alt="">
+                            <img class="svg js" :src="require(`~/assets/svg/js.svg`)" alt="">
                             <span class="name">
                                 JavaScript
                             </span>
                         </figure>
                         <figure>
-                            <img class="Node" :src="require(`~/assets/svg/node-js.svg`)" alt="">
+                            <img class="svg Node" :src="require(`~/assets/svg/node-js.svg`)" alt="">
                             <span class="name">
                                 Node.js
                             </span>
                         </figure>
                         <figure>
-                            <img class="vue" :src="require(`~/assets/svg/vuejs.svg`)" alt="">
+                            <img class="svg vue" :src="require(`~/assets/svg/vuejs.svg`)" alt="">
                             <span class="name">
                                 Vue.js
                             </span>
@@ -69,7 +69,7 @@
             <div v-if="peekAboo" class='modal'>
                 <div class="modalHalf contact">
                     <button class="butts" @click.prevent="peekAboo = !peekAboo">
-                        <img class="exit click" title="Exit Portal" :src="require(`~/assets/svg/exit.svg`)" alt="">
+                        <img class="svg exit click" title="Exit Portal" :src="require(`~/assets/svg/exit.svg`)" alt="">
                     </button>
                     <h3 class="title titleContact">
                         Let's have a chat!
@@ -371,6 +371,7 @@
         height: 72px;
         border-radius: 50%;
         border: none;
+        background-color: var(--blue);
         // background-color: whitesmoke;
         // background-color: transparentize($color: #000000, $amount: 0);
         cursor: pointer;
@@ -379,7 +380,7 @@
             width: 48px;
             height: auto;
             // filter: invert(100%) sepia(98%) saturate(18%) hue-rotate(24deg) brightness(105%) contrast(100%);
-            filter: invert(11%) sepia(47%) saturate(4502%) hue-rotate(305deg) brightness(86%) contrast(98%);
+            filter: var(--filter-secondary);
         }
         position: fixed;
         bottom: 32px;

@@ -1,5 +1,5 @@
 <template>
-    <div class="container dark">
+    <div class="container">
         <header class="header">
             <div class="content">
                 <h1 class="title">
@@ -14,16 +14,16 @@
                 </p>
                 <div class="socials">
                     <a href="" target="_blank" class="links click">
-                        <img class="click" src="~assets/svg/github.svg" alt="">
+                        <img class="click svg" src="~assets/svg/github.svg" alt="">
                     </a>
                     <a href="" target="_blank" class="links click">
-                        <img class="click" src="~assets/svg/linkedin.svg" alt="">
+                        <img class="click svg" src="~assets/svg/linkedin.svg" alt="">
                     </a>
                     <a href="" target="_blank" class="links click">
-                        <img class="click" src="~assets/svg/file-pdf.svg" alt="">
+                        <img class="click svg" src="~assets/svg/file-pdf.svg" alt="">
                     </a>
                     <a href="" target="_blank" class="links click">
-                        <img class="click" src="~assets/svg/discord.svg" alt="">
+                        <img class="click svg" src="~assets/svg/discord.svg" alt="">
                     </a>
                 </div>
             </div>
@@ -104,16 +104,19 @@
                 }
             }
             & .titleSecondary {
-                color: $purp;
+                color: var(--color-primary);
             }
             & .headerP {
                 line-height: 2;
                 font-size: 24px;
                 max-width: 520px;
-                color: $charcoal;
+                color: var(--color);
                 @media (max-width: 800px) {
                     font-size: 16px;
                     margin-left: 16px
+                }
+                b {
+                    color: var(--color-primary);
                 }
             }
             .socials {
@@ -125,35 +128,35 @@
                         height: 32px;
                         width: auto;
                         margin-right: 8px;
-                        filter: invert(10%) sepia(44%) saturate(5598%) hue-rotate(307deg) brightness(86%) contrast(96%);
+                        // filter: var(--filter-primary);
                     }
                     text-decoration: none;
                 }
             }
         }
-        &.dark {
-            // background-color: inherit;
-            .header {
-                .title {
-                    color: whitesmoke;
-                }
-                .titleSecondary {
-                    color: $buttonII;
-                }
-                .headerP {
-                    color: whitesmoke;
-                    b {
-                        color: $buttonII;
-                    }
-                }
-                .socials {
-                    a {
-                        img {
-                            filter: invert(42%) sepia(41%) saturate(2379%) hue-rotate(358deg) brightness(95%) contrast(87%);
-                        }
-                    }
-                }
-            }
-        }
+        // &.dark {
+        //     // background-color: inherit;
+        //     .header {
+        //         .title {
+        //             color: whitesmoke;
+        //         }
+        //         .titleSecondary {
+        //             color: $buttonII;
+        //         }
+        //         .headerP {
+        //             color: whitesmoke;
+        //             b {
+        //                 color: $buttonII;
+        //             }
+        //         }
+        //         .socials {
+        //             a {
+        //                 img {
+        //                     filter: var(--filter);
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
     }
 </style>

@@ -3,53 +3,53 @@
         <nav class="container" id="navBar">
             <div class="container" id="mini">
                 <div v-show="!mobile" class="logo">
-                    <img src='~assets/svg/logo.svg' alt='logo' class='logo'>
+                    <img src='~assets/svg/logo.svg' alt='logo' class='svg logo'>
                 </div>
                 <div v-show="mobile" class="logo mobile">
-                    <img src='~assets/svg/logo.svg' alt='logo' class='logo'>
+                    <img src='~assets/svg/logo.svg' alt='logo' class='svg logo'>
                 </div>
-                <div class="nav-links" v-show="!mobile">
+                <div class="nav-links" v-if="!mobile">
                     <ul>
                         <li class="link">
-                            <nuxt-link class="link__hover-effect--dark" to='/'>.About()</nuxt-link>
+                            <nuxt-link class="link__hover-effect" to='/'>.About()</nuxt-link>
                         </li>
                         <li class="link">
-                            <nuxt-link class="link__hover-effect--dark" to='/'>.Projects()</nuxt-link>
+                            <nuxt-link class="link__hover-effect" to='/'>.Projects()</nuxt-link>
                         </li>
                         <li class="link">
-                            <nuxt-link class="link__hover-effect--dark" to='/'>.Contact()</nuxt-link>
+                            <nuxt-link class="link__hover-effect" to='/'>.Contact()</nuxt-link>
                         </li>
                         <li>
-                            <nuxt-link class="link__hover-effect--dark" to='/'>.Login()/.Register()</nuxt-link>
+                            <nuxt-link class="link__hover-effect" to='/'>.Login()/.Register()</nuxt-link>
                         </li>
                         <li class="adjust">
-                            <img src="~assets/svg/adjust.svg" alt="">
+                            <img class='svg' src="~assets/svg/adjust.svg" alt="" @click="colorSwitch()">
                         </li>
                     </ul>
                 </div>
-                <img @click="toggleMobileNav" v-show="mobile && !mobileNav" class='icon' src="~assets/svg/blinds-raised.svg" alt="">
-                <img @click="toggleMobileNav" v-show="mobile && mobileNav" class='icon' src="~assets/svg/blinds.svg" alt="">
+                <img @click="toggleMobileNav" v-if="mobile && !mobileNav" class='svg icon' src="~assets/svg/blinds-raised.svg" alt="">
+                <img @click="toggleMobileNav" v-else class='svg icon' src="~assets/svg/blinds.svg" alt="">
                 <!-- <div class="menu">
                     <div class="icon">
                     </div>
                 </div> -->
                 <transition name="nav-links">
-                    <div class="nav-links" id="mobile" v-show="mobileNav">
+                    <div class="nav-links" id="mobile" v-if="mobile && mobileNav">
                         <ul>
                             <li class="adjust">
-                                <img src="~assets/svg/adjust.svg" alt="">
+                                <img class='svg' src="~assets/svg/adjust.svg" alt="">
                             </li>
                             <li class="link">
-                                <nuxt-link class="link__hover-effect--dark" to='/'>.About()</nuxt-link>
+                                <nuxt-link class="link__hover-effect" to='/'>.About()</nuxt-link>
                             </li>
                             <li class="link">
-                                <nuxt-link class="link__hover-effect--dark" to='/'>.Projects()</nuxt-link>
+                                <nuxt-link class="link__hover-effect" to='/'>.Projects()</nuxt-link>
                             </li>
                             <li class="link">
-                                <nuxt-link class="link__hover-effect--dark" to='/'>.Contact()</nuxt-link>
+                                <nuxt-link class="link__hover-effect" to='/'>.Contact()</nuxt-link>
                             </li>
                             <li class="link">
-                                <nuxt-link class="link__hover-effect--dark" to='/'>.Login()/.Register()</nuxt-link>
+                                <nuxt-link class="link__hover-effect" to='/'>.Login()/.Register()</nuxt-link>
                             </li>
                         </ul>
                         <!-- <div class="nav-links">
@@ -69,7 +69,7 @@
             
             return {
                 mobile: null,
-                mobileNav: null,
+                mobileNav: false,
                 windowWidth: null,
                 navHeight: null,
                 navH : { navHeight: null, },
@@ -112,9 +112,13 @@
             },
             toggleMobileNav() {
                 this.mobileNav = !this.mobileNav;
+                console.log(this.mobileNav)
             },
             navTall() {
                 this.navHeight = this.$el.offsetHeight
+            },
+            colorSwitch() {
+                // console.log(this.colorMode.value);
             }
         },
     }
@@ -187,7 +191,7 @@
                     width: 42px;
                     height: auto;
                     img {
-                        filter: invert(78%) sepia(44%) saturate(5544%) hue-rotate(342deg) brightness(99%) contrast(99%);
+                        // filter: invert(78%) sepia(44%) saturate(5544%) hue-rotate(342deg) brightness(99%) contrast(99%);
                     }
                     &.mobile {
                         padding-left: 24px;
@@ -205,12 +209,12 @@
                             margin: 0 12px;
                             a {
                                 text-decoration: none;
-                                color: $buttonI;
+                                // color: $buttonI;
                                 font-weight: 600;
                             }
                             img {
                                 height: 90%;
-                                filter: invert(78%) sepia(44%) saturate(5544%) hue-rotate(342deg) brightness(99%) contrast(99%);
+                                // filter: invert(78%) sepia(44%) saturate(5544%) hue-rotate(342deg) brightness(99%) contrast(99%);
                             }
                         }
                     }
@@ -255,7 +259,8 @@
                         position: absolute;
                         top: 24px;
                         right: 24px;
-                        filter: invert(78%) sepia(44%) saturate(5544%) hue-rotate(342deg) brightness(99%) contrast(99%);
+                        cursor: pointer;
+                        // filter: invert(78%) sepia(44%) saturate(5544%) hue-rotate(342deg) brightness(99%) contrast(99%);
                     }
                 }
                 // .menu {
