@@ -6,10 +6,10 @@ const {Nuxt, Builder} = require('nuxt');
 const app = express()
 
 const config = require('../nuxt.config')
-config.dev = !(process.env.NODE_ENV === 'production')
+// config.dev = !(process.env.NODE_ENV === 'production')
 
 
-const PORT = process.env.PORT || '6969'
+// const PORT = process.env.PORT || '6969'
 // async function start() {
 // 	// const nuxt = new Nuxt(config)
 // 	// console.log(config)
@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 	next()
 })
 // app.listen(6969, 0)
-app.set("port", PORT);
+// app.set("port", PORT);
 const mailer = require('./routes/mail.js')
 app.use(mailer)
 
