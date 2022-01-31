@@ -155,7 +155,7 @@
 <script>
     import { ValidationObserver, ValidationProvider } from 'vee-validate';
     import axios from 'axios'
-
+    // this.$root.$emit('eventing', this.pikaPika)
     // import '@/plugins/validate'
     export default {
         name: 'ContactModal',
@@ -189,6 +189,9 @@
         beforeMount() {},
         mounted() {
             this.curtains()
+            this.$root.$on('updatePeekAboo', () => {
+                this.peekAboo = !this.peekAboo;
+            })
         },
         beforeUpdate() {},
         updated() {},
@@ -232,7 +235,10 @@
                     }
                 }
                 push()
-            }
+            },
+            // pikaPika() {
+            //     this.peekAboo = !this.peekAboo;
+            // }
             
         },
     }

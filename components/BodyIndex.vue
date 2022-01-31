@@ -6,7 +6,7 @@
                     Hej
                 </h1>
                 <h1 class="titleSecondary">
-                    I'm Hayden
+                    I'm *******
                 </h1>
                 <p class="headerP">
                     I'm a <span class="purp">Full-Stack Web Dev</span> with a strong passion for learning new languages and techniques. <br>
@@ -22,7 +22,7 @@
                     <a href="" target="_blank" class="links click">
                         <img class="click svg" src="~assets/svg/file-pdf.svg" alt="">
                     </a>
-                    <a href="https://discord.gg/wwuJybnQUF" target="_blank" class="links click">
+                    <a href="https://discord.gg/DqhCMaWSG6" target="_blank" class="links click">
                         <img class="click svg" src="~assets/svg/discord.svg" alt="">
                     </a>
                 </div>

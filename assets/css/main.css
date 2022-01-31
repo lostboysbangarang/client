@@ -125,7 +125,7 @@ h1, h2, h3, h4, h5, h6, span {
   --buttonIII: #9A031E;
   --buttonIV: #5F0F40;
   --blue: #0F4C5C;
-  --color-mailBtn: var(--buttonI);
+  --color-mailBtn: #FAFAFA;
   --filter: invert(78%) sepia(44%) saturate(5544%) hue-rotate(342deg) brightness(99%) contrast(99%);
   --filter-mail: invert(21%) sepia(91%) saturate(410%) hue-rotate(145deg) brightness(96%) contrast(95%);
   --filter-primary: invert(40%) sepia(79%) saturate(1012%) hue-rotate(353deg) brightness(96%) contrast(93%);

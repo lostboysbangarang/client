@@ -11,16 +11,20 @@
                 <div class="nav-links" v-if="!mobile">
                     <ul>
                         <li class="link">
-                            <nuxt-link class="link__hover-effect" to='/'>.About()</nuxt-link>
+                            <span class="link__hover-effect" @click="modal">.About()</span>
                         </li>
                         <li class="link">
-                            <nuxt-link class="link__hover-effect" to='/'>.Projects()</nuxt-link>
+                            <span class="link__hover-effect" v-scroll-to="{
+                                                                            el: '.projects' ,
+                                                                            container: 'body',
+                                                                            offset: -80
+                                                                            }">.Projects()</span>
                         </li>
                         <li class="link">
-                            <nuxt-link class="link__hover-effect" to='/'>.Contact()</nuxt-link>
+                            <nuxt-link class="link__hover-effect" to='/'>.Reviews()</nuxt-link>
                         </li>
                         <li>
-                            <nuxt-link class="link__hover-effect" to='/'>.Login()/.Register()</nuxt-link>
+                            <nuxt-link class="link__hover-effect" to='/'>.Login()||.Register()</nuxt-link>
                         </li>
                         <li class="adjust">
                             <img class='svg' src="~assets/svg/adjust.svg" alt="" @click="colorSwitch(this)">
@@ -44,16 +48,16 @@
                                 <img class='svg' src="~assets/svg/adjust.svg" alt="">
                             </li>
                             <li class="link">
-                                <nuxt-link class="link__hover-effect" to='/'>.About()</nuxt-link>
+                                <span class="link__hover-effect" >.About()</span>
                             </li>
                             <li class="link">
                                 <nuxt-link class="link__hover-effect" to='/'>.Projects()</nuxt-link>
                             </li>
                             <li class="link">
-                                <nuxt-link class="link__hover-effect" to='/'>.Contact()</nuxt-link>
+                                <nuxt-link class="link__hover-effect" to='/'>.Reviews()</nuxt-link>
                             </li>
                             <li class="link">
-                                <nuxt-link class="link__hover-effect" to='/'>.Login()/.Register()</nuxt-link>
+                                <nuxt-link class="link__hover-effect" to='/'>.Login() || .Register()</nuxt-link>
                             </li>
                         </ul>
                         <!-- <div class="nav-links">
@@ -66,6 +70,7 @@
 </template>
 
 <script>
+    import about from '~/components/Nav.vue';
     export default {
         name: 'Nav',
         asyncData() {},
@@ -98,6 +103,9 @@
         mounted() {
             // console.log(`Test:\t`, this.$el.offsetHeight)
             this.navTall();
+            this.$root.$on('eventing', data => {
+                console.log(data);
+            }); 
             // console.log(`navHeight:\t`, this.navHeight)
         },
         beforeUpdate() {},
@@ -139,6 +147,10 @@
                     break;
                     
                 }
+            },
+            modal() {
+                console.log(this)
+                this.$root.$emit('updatePeekAboo');
             }
         },
     }
@@ -185,6 +197,12 @@
         &:hover:after {
             left: 0;
             width: 100%;
+        }
+    }
+    .link {
+        span {
+            color: var(--color-primary);
+            font-weight: 500;
         }
     }
     header {
