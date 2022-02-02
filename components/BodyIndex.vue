@@ -6,7 +6,7 @@
                     Hej
                 </h1>
                 <h1 class="titleSecondary">
-                    I'm *******
+                    I'm Hayden
                 </h1>
                 <p class="headerP">
                     I'm a <span class="purp">Full-Stack Web Dev</span> with a strong passion for learning new languages and techniques. <br>
