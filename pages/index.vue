@@ -97,6 +97,7 @@ export default {
             bottom: 20px;
             left: 50%;
             transform: translateY(-50%);
+            z-index: 15;
             &Icon {
                 width: 20px;
                 height: 30px;

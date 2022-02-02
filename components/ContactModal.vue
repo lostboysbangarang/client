@@ -362,14 +362,14 @@
         transition: all 1500ms;
     }
     .LtoR-enter, .LtoR-leave-to {
-        transform: translateX(-150%) translateY(-135%) !important;
+        transform: translateX(-26.66vw) translateY(-90vh) !important;
 
     }
     .RtoL-enter-active, .RtoL-leave-active {
         transition: all 1500ms;
     }
     .RtoL-enter, .RtoL-leave-to {
-        transform: translateX(150%) translateY(-135%) !important;
+        transform: translateX(80vw) translateY(-90vh) !important;
 
     }
     .mailBtn {
@@ -377,6 +377,7 @@
         height: 72px;
         border-radius: 50%;
         border: none;
+        z-index: 15;
         background-color: var(--color-mailBtn);
         // background-color: #fafafa;
         // background-color: transparentize($color: #000000, $amount: 0);
@@ -402,7 +403,7 @@
         top:    0%;
         left:   0%;
         z-index: 25;
-        transform: translateY(-86vh) translateX(22vw);
+        transform: translateY(-74vh) translateX(26.5vw);
         
         width: 90%;
         max-width: 1200px;
